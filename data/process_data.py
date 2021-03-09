@@ -49,7 +49,7 @@ def save_data(df, database_filename):
     """Saves DataFrame (df) to database path"""
     name = 'sqlite:///' + database_filename
     engine = create_engine(name)
-    df.to_sql('Disasters', engine, index=False)
+    df.to_sql('DisasterResponse_table', engine, index=False)
 
 
 def main():
@@ -75,7 +75,7 @@ def main():
               'datasets as the first and second argument respectively, as '\
               'well as the filepath of the database to save the cleaned data '\
               'to as the third argument. \n\nExample: python process_data.py '\
-              'disaster_messages.csv disaster_categories.csv '\
+              'messages.csv categories.csv '\
               'DisasterResponse.db')
 
 
