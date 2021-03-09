@@ -141,20 +141,18 @@ def build_pipeline():
         
     """
     pipeline = Pipeline([
-        ('features', FeatureUnion([
-
-            ('text_pipeline', Pipeline([
-                ('count_vectorizer', CountVectorizer(tokenizer=tokenize)),
-                ('tfidf_transformer', TfidfTransformer())
-            ])),
-
-            ('starting_verb_transformer', StartingVerbExtractor())
-        ])),
-
-        ('classifier', MultiOutputClassifier(AdaBoostClassifier()))
+        ('vect', CountVectorizer(tokenizer=tokenize)),
+        ('tfidf', TfidfTransformer()),
+        ('clf', MultiOutputClassifier(RandomForestClassifier()))
     ])
-
-    return pipeline
+    # parameters set to this due to reduce the size of pkl file, which were too large (600MB) for uploading to github with my previous parameters.
+    parameters = {
+        'clf__estimator__n_estimators': [10],
+        'clf__estimator__min_samples_split': [2],
+    
+    }
+    model = GridSearchCV(pipeline, param_grid=parameters, n_jobs=4, verbose=2, cv=3)
+    return model
 
 def multioutput_fscore(y_true,y_pred,beta=1):
     """
