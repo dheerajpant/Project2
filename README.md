@@ -18,3 +18,16 @@ This project is to classify disaster response messages through machine learning.
 > python train_classifier.py ../data/DisasterResponse.db classifier.pkl
 
 > python run.py
+
+## WANT TO RUN USING JUPYTER? :
+> I have given jupyter notebook(also inside models folder), if you want to retrain your model just run that using anaconda.
+
+## Screenshots
+This is the frontpage:
+![Alt text](https://github.com/dheerajpant/Project2/blob/main/Screenshot1.PNG?raw=true "Screenshot1")
+
+By inputting a word, you can check its category:
+![Alt text](https://github.com/dheerajpant/Project2/blob/main/Screenshot2.PNG?raw=true "Screenshot2")
+
+## About
+This project was prepared as part of the Udacity Data Scientist nanodegree programme. The data was provided by Figure Eight. 
